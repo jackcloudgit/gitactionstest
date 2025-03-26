@@ -1,14 +1,12 @@
-name: 'Build Utilities'
-description: 'Reusable build steps'
-
+name: "Sample Action"
+description: "A sample reusable action"
 inputs:
-  version:
+  name:
+    description: "Name to greet"
     required: true
-    type: string
-
+    default: "World"
 runs:
   using: "composite"
   steps:
-    - name: Build with Maven
+    - run: echo "Hello, ${{ inputs.name }} from GitHub Actions!"
       shell: bash
-      run: mvn -B clean package -DskipTests -Dversion=${{ inputs.version }}
