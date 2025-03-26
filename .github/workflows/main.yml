@@ -14,6 +14,6 @@ jobs:
       - name: List directory structure
         run: find . -print
       
-      - uses: ./github/actions/sample-action
+      - uses: ./github/actions/sampleaction
         with:
           version: 1.0.0  
