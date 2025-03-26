@@ -5,7 +5,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: List tree directory structure
+        run: tree -a
+      
+      - name: List directory structure
+        run: find . -print
       
       - uses: ./github/actions/sample-action
         with:
