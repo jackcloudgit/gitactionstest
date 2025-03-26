@@ -13,6 +13,6 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Run Sample Action
-        run: |
-          cd $GITHUB_WORKSPACE/github/actions/sample-action
-          echo "Hello, ${{ inputs.name }} from GitHub Actions!"     
+        uses: ./gitactionstest/github/actions/sample-action
+        with:
+          name: "Jack"     
