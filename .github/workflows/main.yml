@@ -12,11 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       
-      - name: Debug Folder Structure
-        run: ls -R
-
       - name: Run Sample Action
-        uses: ./github/actions/sample-action
-        with:
-          name: "Jack"
-      
+        run: |
+          cd $GITHUB_WORKSPACE/github/actions/sample-action
+          echo "Hello, ${{ inputs.name }} from GitHub Actions!"     
