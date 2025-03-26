@@ -1,0 +1,14 @@
+name: 'Build Utilities'
+description: 'Reusable build steps'
+
+inputs:
+  version:
+    required: true
+    type: string
+
+runs:
+  using: "composite"
+  steps:
+    - name: Build with Maven
+      shell: bash
+      run: mvn -B clean package -DskipTests -Dversion=${{ inputs.version }}
