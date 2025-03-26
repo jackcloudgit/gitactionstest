@@ -16,3 +16,6 @@ jobs:
         uses: ./github/actions/sample-action
         with:
           name: "Jack"
+      
+      - name: Debug Folder Structure
+        run: ls -R
