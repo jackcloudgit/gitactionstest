@@ -11,11 +11,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      
+      - name: Debug Folder Structure
+        run: ls -R
 
       - name: Run Sample Action
         uses: ./github/actions/sample-action
         with:
           name: "Jack"
       
-      - name: Debug Folder Structure
-        run: ls -R
