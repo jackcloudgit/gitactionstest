@@ -3,6 +3,6 @@ on: [push, workflow_dispatch]
 
 jobs:
   call-postman-workflow:
-    uses: ./.github/workflows/test-api-collection.yml
+    uses: ./.github/workflows/run-postman_simplified.yml
     with:
       job_name: "test-api-dev"
