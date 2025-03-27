@@ -4,5 +4,8 @@ on: [push, workflow_dispatch]
 jobs:
   call-postman-workflow:
     uses: jackcloudgit/library/.github/workflows/run-postman_simplified.yml@main
+    secrets: 
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     with:
-      job_name: "test-api-dev"
+      job_name: "test-api-dev"    
