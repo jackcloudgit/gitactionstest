@@ -1,3 +1,6 @@
+name: Sample Action Test
+on: [push, workflow_dispatch]
+
 jobs:
   call-postman-workflow:
     uses: ./.github/workflows/test-api-collection.yml
