@@ -1,0 +1,5 @@
+jobs:
+  call-postman-workflow:
+    uses: ./.github/workflows/test-api-collection.yml
+    with:
+      job_name: "test-api-dev"
