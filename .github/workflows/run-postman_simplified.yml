@@ -41,6 +41,9 @@ jobs:
       - name: Install Postman CLI
         run: |
           curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+          export PATH=$HOME/.postman:$PATH
+          echo 'export PATH=$HOME/.postman:$PATH' >> ~/.bashrc
+          echo "Postman CLI installed at: $(which postman)"
           postman --version
 
       - name: Fetch Credentials and Base URL
