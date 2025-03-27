@@ -1,4 +1,4 @@
-name: Sample Action Test
+name: Postman Sample Test simplified
 on: [push, workflow_dispatch]
 
 jobs:
