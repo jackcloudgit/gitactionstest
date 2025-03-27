@@ -11,9 +11,10 @@ jobs:
       - name: List tree directory structure
         run: tree -a
       
-      - name: List directory structure
-        run: find . -print
-      
+      - name: print variables
+        run: |
+          echo "username = ${{ vars.USERNAME }}"
+
       - uses: ./.github/actions/sampleaction
         with:
           version: 1.0.0  
