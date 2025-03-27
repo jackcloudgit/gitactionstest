@@ -61,7 +61,7 @@ jobs:
 
       - name: Run Postman Collection
         run: |
-          postman-cli collection run "./postman/test-api-collection.json" -e "./postman/env-vars1.json" -k \
+          postman-cli collection run "./postman/test-api-collection.json" -e "" -k \
             --env-var "username=$username" \
             --env-var "password=$password" \
             --env-var "baseUrl=$base_url"
