@@ -3,6 +3,6 @@ on: [push, workflow_dispatch]
 
 jobs:
   call-postman-workflow:
-    uses: https://github.com/jackcloudgit/library/actions/workflows/run-postman_simplified.yml/.github/workflows/run-postman_simplified.yml@main
+    uses: jackcloudgit/library/.github/workflows/run-postman_simplified.yml@main
     with:
       job_name: "test-api-dev"
