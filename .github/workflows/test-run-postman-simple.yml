@@ -11,18 +11,21 @@ on:
           - dev
           - staging
           - prod
+      username:
+        description: "username"
+        required: "true"
+        default: "admin"
+      base_url:
+        description: "base url"
+        required: "true"
+        default: "https://test.com"
 
-      # run_auth:
-      #   description: "Run authentication tests?"
-      #   required: true
-      #   default: true
-      #   type: boolean
+  
+      run_db_seed:
+        description: "Seed database before tests?"
+        required: false
+        default: false
 
-      # run_db_seed:
-      #   description: "Seed database before tests?"
-      #   required: false
-      #   default: false
-      #   type: boolean
 
 jobs:
   call-postman-workflow:
@@ -33,4 +36,6 @@ jobs:
     with:
       job_name: "test-api-${{ github.event.inputs.environment }}"
       environment: ${{ github.event.inputs.environment }}
+      username: ${{ github.event.inputs.username }}
+      base_url: ${{ github.event.inputs.base_url }}
       
