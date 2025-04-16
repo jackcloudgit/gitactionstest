@@ -12,17 +12,17 @@ on:
           - staging
           - prod
 
-      run_auth:
-        description: "Run authentication tests?"
-        required: true
-        default: true
-        type: boolean
+      # run_auth:
+      #   description: "Run authentication tests?"
+      #   required: true
+      #   default: true
+      #   type: boolean
 
-      run_db_seed:
-        description: "Seed database before tests?"
-        required: false
-        default: false
-        type: boolean
+      # run_db_seed:
+      #   description: "Seed database before tests?"
+      #   required: false
+      #   default: false
+      #   type: boolean
 
 jobs:
   call-postman-workflow:
@@ -33,7 +33,4 @@ jobs:
     with:
       job_name: "test-api-${{ github.event.inputs.environment }}"
       environment: ${{ github.event.inputs.environment }}
-      run_auth: "${{ github.event.inputs.run_auth }}"
-      run_db_seed: "${{ github.event.inputs.run_db_seed }}"
-
       
