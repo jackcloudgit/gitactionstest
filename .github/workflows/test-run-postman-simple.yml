@@ -11,16 +11,14 @@ on:
           - dev
           - staging
           - prod
-      # username:
-      #   description: "username"
-      #   required: "true"
-      #   default: "admin"
-      #   type: string
-      # base_url:
-      #   description: "base url"
-      #   required: "true"
-      #   default: "https://test.com"
-      #   type: string
+      username:
+        description: "Username for API access"
+        required: true
+        default: "testuser"
+      base_url:
+        description: "Base URL for the environment"
+        required: true
+        default: "https://api.example.com"
 
 jobs:
   call-postman-workflow:
@@ -31,6 +29,5 @@ jobs:
     with:
       job_name: "test-api-${{ github.event.inputs.environment }}"
       environment: ${{ github.event.inputs.environment }}
-      username: ${{ github.event.inputs.username }}
-      # base_url: ${{ github.event.inputs.base_url }}
-      
+      username: "${{ github.event.inputs.username }}"
+      base_url: "${{ github.event.inputs.base_url }}"      
