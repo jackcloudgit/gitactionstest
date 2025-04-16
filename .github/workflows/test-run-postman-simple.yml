@@ -33,5 +33,7 @@ jobs:
     with:
       job_name: "test-api-${{ github.event.inputs.environment }}"
       environment: ${{ github.event.inputs.environment }}
-      run_auth: ${{ github.event.inputs.run_auth }}
-      run_db_seed: ${{ github.event.inputs.run_db_seed }}
+      run_auth: "${{ github.event.inputs.run_auth }}"
+      run_db_seed: "${{ github.event.inputs.run_db_seed }}"
+
+      
