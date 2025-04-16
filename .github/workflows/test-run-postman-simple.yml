@@ -1,5 +1,28 @@
 name: Postman Sample Test simplified
-on: [push, workflow_dispatch]
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Select the environment"
+        required: true
+        default: "dev"
+        type: choice
+        options:
+          - dev
+          - staging
+          - prod
+
+      run_auth:
+        description: "Run authentication tests?"
+        required: true
+        default: true
+        type: boolean
+
+      run_db_seed:
+        description: "Seed database before tests?"
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   call-postman-workflow:
@@ -8,4 +31,7 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     with:
-      job_name: "test-api-dev"    
+      job_name: "test-api-${{ github.event.inputs.environment }}"
+      environment: ${{ github.event.inputs.environment }}
+      run_auth: ${{ github.event.inputs.run_auth }}
+      run_db_seed: ${{ github.event.inputs.run_db_seed }}
