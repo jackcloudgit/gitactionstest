@@ -15,17 +15,12 @@ on:
         description: "username"
         required: "true"
         default: "admin"
+        type: string
       base_url:
         description: "base url"
         required: "true"
         default: "https://test.com"
-
-  
-      run_db_seed:
-        description: "Seed database before tests?"
-        required: false
-        default: false
-
+        type: string
 
 jobs:
   call-postman-workflow:
