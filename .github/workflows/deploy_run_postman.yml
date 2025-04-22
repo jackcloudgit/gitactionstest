@@ -1,4 +1,4 @@
-name: Postman Sample Test simplified
+name: deploy_run_postman
 on:
   workflow_dispatch:
     inputs:
@@ -20,8 +20,19 @@ on:
         required: true
         default: "https://api.example.com"
 jobs:
+  deploy-app:
+    name: Deploy Application
+    uses: jackcloudgit/library/.github/workflows/reusable-deploy.yml@main
+    with:
+      environment: ${{ github.event.inputs.environment }}
+    secrets:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
   call-postman-workflow:
     uses: jackcloudgit/library/.github/workflows/run-postman_simplified.yml@main
+    needs: deploy-app  # Wait for deploy to finish
+    if: ${{ success() }}  # Run only if deploy-app succeeds
     secrets: 
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
