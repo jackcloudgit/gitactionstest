@@ -1,5 +1,4 @@
 name: deploy_run_postman
-
 on:
   workflow_dispatch:
     inputs:
@@ -20,7 +19,6 @@ on:
         description: "Base URL for the environment"
         required: true
         default: "https://api.example.com"
-
 jobs:
   deploy-app:
     name: Deploy Application
@@ -30,19 +28,16 @@ jobs:
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    environment: ${{ github.event.inputs.environment }}  # 👈 Enables deployment tracking
 
   call-postman-workflow:
-    name: Run Postman Tests
     uses: jackcloudgit/library/.github/workflows/run-postman_simplified.yml@main
-    needs: deploy-app
-    if: ${{ success() }}
+    needs: deploy-app  # Wait for deploy to finish
+    if: ${{ success() }}  # Run only if deploy-app succeeds
+    secrets: 
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     with:
       job_name: "test-api-${{ github.event.inputs.environment }}"
       environment: ${{ github.event.inputs.environment }}
       username: "${{ github.event.inputs.username }}"
       base_url: "${{ github.event.inputs.base_url }}"
-    secrets:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    environment: ${{ github.event.inputs.environment }}  # 👈 Enables deployment tracking
