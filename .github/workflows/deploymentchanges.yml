@@ -1,4 +1,4 @@
-name: deploy_run_postman
+name: Build Deploy Status
 on:
   workflow_dispatch:
 jobs:
