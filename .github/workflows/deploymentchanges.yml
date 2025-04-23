@@ -5,7 +5,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment:
-      name: dev  # This must match the name from Settings → Environments
+      name: Dev  # This must match the name from Settings → Environments
     steps:
       - name: Checkout
         uses: actions/checkout@v4
