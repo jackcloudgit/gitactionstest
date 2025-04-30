@@ -1,4 +1,4 @@
-name: On Deployment Success
+name: Trigger on the basis of Deployment Status
 
 on:
   workflow_run:
