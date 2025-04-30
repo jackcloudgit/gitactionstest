@@ -7,7 +7,7 @@ jobs:
   call-postman-workflow:
     if: >
       github.event.deployment_status.state == 'success' &&
-      github.event.deployment.environment == 'Dev'
+      (github.event.deployment.environment == 'Dev' || github.event.deployment.environment == 'Stg' )
     uses: jackcloudgit/library/.github/workflows/run-postman_simplified.yml@main
     with:
       job_name: "test-api-Dev"
