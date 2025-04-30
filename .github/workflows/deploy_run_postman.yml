@@ -40,4 +40,4 @@ jobs:
       job_name: "test-api-${{ github.event.inputs.environment }}"
       environment: ${{ github.event.inputs.environment }}
       username: "${{ github.event.inputs.username }}"
-      base_url: "${{ github.event.inputs.base_url }}"      
+      base_url: "${{ github.event.inputs.base_url }}"

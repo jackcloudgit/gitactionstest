@@ -1,0 +1,14 @@
+name: Build Deploy Status
+on:
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: Dev  # This must match the name from Settings → Environments
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Simulate Deployment
+        run: echo "Deploying to dev..."
