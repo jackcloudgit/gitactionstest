@@ -3,19 +3,16 @@ on:
   deployment_status:
 
 jobs:
-  after-deploy:
+  call-postman-workflow:
     if: >
       github.event.deployment_status.state == 'success' &&
       github.event.deployment.environment == 'Dev'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Call Postman Workflow
-        uses: jackcloudgit/library/.github/workflows/run-postman_simplified.yml@main
-        with:
-          job_name: "test-api-Dev"
-          environment: "Dev"
-          username: "your-username-here"
-          base_url: "https://your-base-url-here"
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    uses: jackcloudgit/library/.github/workflows/run-postman_simplified.yml@main
+    with:
+      job_name: "test-api-Dev"
+      environment: "Dev"
+      username: "your-username-here"
+      base_url: "https://your-base-url-here"
+    secrets:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
