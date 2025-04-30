@@ -1,0 +1,14 @@
+name: On Deployment Success
+
+on:
+  deployment_status:
+
+jobs:
+  after-deploy:
+    if: >
+      github.event.deployment_status.state == 'success' &&
+      github.event.deployment.environment == 'Dev'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Do something after successful deployment
+        run: echo "Deployment to Dev was successful!"
