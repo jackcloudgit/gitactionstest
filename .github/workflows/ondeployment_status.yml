@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Do something after successful deployment
-        run: echo "Deployment to your-environment-name was successful!
+        run: echo "Deployment to your-environment-name was successful!"
