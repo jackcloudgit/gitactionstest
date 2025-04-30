@@ -1,4 +1,4 @@
-name: deploy_run_postman
+name: Run Postman Tests After Deployment
 on:
   workflow_dispatch:
     inputs:

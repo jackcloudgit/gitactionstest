@@ -1,4 +1,4 @@
-name: Build Deploy Status
+name: Update Deployment Status - Dev Env
 on:
   workflow_dispatch:
 jobs:
